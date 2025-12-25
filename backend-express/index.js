@@ -1,7 +1,12 @@
+
+
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
+
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 mongoose.connect("mongodb://localhost:27017/interview_scheduler")
@@ -24,4 +29,15 @@ app.get("/data", async (req, res) => {
     candidates,
     interviewers
   });
+});
+
+
+
+app.get("/schedule", (req, res) => {
+  const schedule = [
+    { candidate: "C101", interviewer: "I201", slot: "10:00 AM", status: "Scheduled" },
+    { candidate: "C102", interviewer: "I202", slot: "11:00 AM", status: "Scheduled" }
+  ];
+
+  res.json(schedule);
 });
