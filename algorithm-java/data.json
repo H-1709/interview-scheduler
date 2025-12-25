@@ -1,0 +1,32 @@
+{
+  "candidates": [
+    {
+      "_id": "694ce600670ead2e94a91527",
+      "candidateId": "C101",
+      "name": "Amit Sharma",
+      "skills": [
+        "Java",
+        "DSA",
+        "SQL"
+      ],
+      "availability": [
+        "2025-01-10T10:00",
+        "2025-01-10T11:00"
+      ]
+    }
+  ],
+  "interviewers": [
+    {
+      "_id": "694ce61d670ead2e94a9152a",
+      "interviewerId": "I201",
+      "name": "Rahul Mehta",
+      "skills": [
+        "Java",
+        "System Design"
+      ],
+      "availability": [
+        "2025-01-10T10:00"
+      ]
+    }
+  ]
+}
