@@ -1,135 +1,98 @@
-# Intelligent Interview Scheduler & Skill Matcher
+## Interview Scheduler System
 
-An end-to-end full-stack system that intelligently matches candidates with interviewers and schedules interviews based on skill overlap and availability.
+Interview Scheduler is a full-stack application that automates interview scheduling by matching candidates and interviewers based on skill compatibility and availability. The project demonstrates clean separation of algorithmic logic, backend services, and frontend presentation, making it suitable for scalable real-world systems and technical interviews.
 
-This project demonstrates practical use of **greedy algorithms**, **hash-based skill matching**, and **full-stack integration** using Java, Express.js, MongoDB, and Next.js.
+TECH STACK
+Java (Core Java, OOP, Collections)
+Node.js
+Express.js
+MongoDB
+Mongoose
+Next.js (React, App Router)
+REST APIs
+```
+PROJECT STRUCTURE
+interview-scheduler/
+├── algorithm-java/
+│   ├── SkillMatcher.java
+│   ├── Scheduler.java
+│   ├── DataLoader.java
+│   └── data.json
+├── backend-express/
+│   ├── index.js
+│   └── models/
+│       ├── Candidate.js
+│       └── Interviewer.js
+├── frontend-next/
+│   └── src/app/schedule/page.js
+└── README.md
+```
 
----
+# SYSTEM DESIGN OVERVIEW
+The system is divided into three independent layers. The Java algorithm layer handles skill matching and scheduling logic. The backend layer manages data persistence and API exposure. The frontend layer visualizes the generated interview schedule. This separation improves maintainability, scalability, and testability.
 
-## 🚀 Features
+ALGORITHM LAYER (JAVA)
+DataLoader.java reads structured input data from data.json.
+SkillMatcher.java compares candidate skills with interviewer skills using collection-based matching logic.
+Scheduler.java assigns interview slots by validating skill compatibility and overlapping availability.
+The algorithm layer is modular and can be extended with priority scoring, optimization strategies, or conflict resolution.
 
-- Skill-based candidate–interviewer matching using hash sets
-- Greedy algorithm for conflict-free interview scheduling
-- MongoDB for flexible storage of candidates and interviewers
-- Express.js backend exposing REST APIs
-- Java-based scheduling and matching logic
-- Next.js frontend dashboard for viewing interview schedules
-- Clean, recruiter-friendly UI with status indicators
+BACKEND (NODE.JS + EXPRESS)
+MongoDB is used to store candidate and interviewer data.
+Candidate.js and Interviewer.js define the database schemas.
+index.js initializes the Express server, connects MongoDB, and exposes REST endpoints.
+GET /data returns all candidates and interviewers.
+GET /schedule returns the generated interview schedule.
+The backend acts as the integration layer between the Java algorithm and the frontend UI.
 
----
+FRONTEND (NEXT.JS)
+The frontend is built using Next.js App Router.
+The schedule page fetches interview data from the backend using REST APIs.
+It displays the interview schedule in a clean dashboard with loading and error handling.
+Client-side rendering ensures responsiveness and smooth user interaction.
 
-## 🛠 Tech Stack
+## HOW TO RUN THE PROJECT
 
-| Layer        | Technology |
-|-------------|------------|
-| Algorithm   | Java |
-| Backend     | Node.js, Express.js |
-| Database    | MongoDB |
-| Frontend    | Next.js (React), Tailwind CSS |
+1. START MONGODB
+Ensure MongoDB is running locally on:
+mongodb://localhost:27017/interview_scheduler
 
----
+2. RUN BACKEND
+cd backend-express
+npm install
+node index.js
+Server runs on http://localhost:5000
 
-## 🧠 System Architecture
+3. RUN FRONTEND
+cd frontend-next
+npm install
+npm run dev
+Open http://localhost:3000/schedule
 
-1. **MongoDB** stores candidates, interviewers, skills, and availability  
-2. **Express.js** exposes REST APIs to fetch scheduling data  
-3. **Java** processes data using:
-   - Hash-based skill scoring
-   - Greedy scheduling algorithm
-4. **Next.js** fetches the schedule and displays it in a dashboard
+4. RUN JAVA ALGORITHM (OPTIONAL)
+cd algorithm-java
+javac *.java
+java Scheduler
 
-This separation ensures scalability and clean architecture.
+KEY FEATURES
+Skill-based candidate and interviewer matching
+Availability-aware interview scheduling
+Java algorithm separated from backend logic
+REST API driven architecture
+Scalable and interview-ready system design
 
----
+RESUME HIGHLIGHTS
+Built a Java-based interview scheduling algorithm using skill matching and availability constraints.
+Developed a Node.js and Express backend integrated with MongoDB for data persistence.
+Created a Next.js dashboard to visualize interview schedules using REST APIs.
+Designed a modular, scalable architecture separating algorithms, backend services, and frontend UI.
 
-## ⚙️ Algorithm Design
+FUTURE ENHANCEMENTS
+Priority-based scheduling using weighted scoring
+Conflict resolution for overlapping interviews
+Real-time schedule updates
+Advanced optimization or ML-based matching
 
-### Skill Matching
-- Uses `HashSet` for O(1) skill lookup
-- Score = number of common skills between candidate and interviewer
-
-### Scheduling Strategy
-- Greedy approach
-- Prioritizes:
-  1. Maximum skill overlap
-  2. Availability compatibility
-- Assigns the best available interviewer per candidate
-
-### Time Complexity
-- Skill matching: **O(S)**
-- Scheduling: **O(C × I × S)**  
-  where:
-  - C = candidates
-  - I = interviewers
-  - S = skills per candidate
-
----
-
-project_structure:
-  algorithm_java:
-    - SkillMatcher.java
-    - Scheduler.java
-    - DataLoader.java
-    - data.json
-  backend_express:
-    - index.js
-    - models:
-        - Candidate.js
-        - Interviewer.js
-  frontend_next:
-    - src/app/schedule/page.js
-  root:
-    - README.md
-
-how_to_run:
-  step_1_start_mongodb:
-    description: Ensure MongoDB is running locally
-    url: mongodb://localhost:27017
-
-  step_2_start_backend:
-    commands:
-      - cd backend-express
-      - node index.js
-    runs_on: http://localhost:5000
-
-  step_3_start_frontend:
-    commands:
-      - cd frontend-next
-      - npm run dev
-    runs_on: http://localhost:3000/schedule
-
-sample_output:
-  - candidate: C101
-    interviewer: I201
-    slot: "10:00 AM"
-    status: Scheduled
-  - candidate: C102
-    interviewer: I202
-    slot: "11:00 AM"
-    status: Scheduled
-
-key_learnings:
-  - Applied greedy algorithms to real-world scheduling problems
-  - Used hash-based skill matching for efficient comparisons
-  - Designed clean separation between algorithm, backend, and UI layers
-  - Built a complete full-stack system using Java and JavaScript
-
-future_improvements:
-  - Automate Java scheduler execution from Express backend
-  - Add interviewer capacity and priority constraints
-  - Improve scheduling fairness and conflict resolution
-  - Add authentication and role-based access
-  - Deploy using Docker and cloud services
-
-author:
-  name: Rajyaguru Hir
-  degree: Bachelor of Engineering in Information Technology
-  github: https://github.com/H-1709
-  linkedin: https://linkedin.com/in/hir-rajyaguru
-
-note:
-  purpose: Internship and learning demonstration
-  focus:
-    - algorithmic clarity
-    - system design
-    - clean full-stack integration
+AUTHOR
+Rajyaguru Hir
+GitHub: https://github.com/H-1709
