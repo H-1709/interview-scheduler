@@ -31,13 +31,59 @@ app.get("/data", async (req, res) => {
   });
 });
 
+app.get("/schedule", async (req, res) => {
+  try {
+    const candidates = await Candidate.find();
+    const interviewers = await Interviewer.find();
 
+    const usedSlots = new Set();
+    const interviewerLoad = {}; // tracks number of interviews per interviewer
+    const schedule = [];
 
-app.get("/schedule", (req, res) => {
-  const schedule = [
-    { candidate: "C101", interviewer: "I201", slot: "10:00 AM", status: "Scheduled" },
-    { candidate: "C102", interviewer: "I202", slot: "11:00 AM", status: "Scheduled" }
-  ];
+    const MAX_INTERVIEWS_PER_INTERVIEWER = 2;
 
-  res.json(schedule);
+    for (const interviewer of interviewers) {
+      interviewerLoad[interviewer.name] = 0;
+    }
+
+    for (const candidate of candidates) {
+      for (const interviewer of interviewers) {
+
+        // ❌ Skip if interviewer already overloaded
+        if (interviewerLoad[interviewer.name] >= MAX_INTERVIEWS_PER_INTERVIEWER) {
+          continue;
+        }
+
+        // ✅ Skill match check
+        const skillMatch = candidate.skills.some(skill =>
+          interviewer.skills.includes(skill)
+        );
+        if (!skillMatch) continue;
+
+        // ✅ Availability match
+        const commonSlot = candidate.availability.find(slot =>
+          interviewer.availability.includes(slot) && !usedSlots.has(slot)
+        );
+        if (!commonSlot) continue;
+
+        // Assign interview
+        usedSlots.add(commonSlot);
+        interviewerLoad[interviewer.name]++;
+
+        schedule.push({
+          candidate: candidate.name,
+          interviewer: interviewer.name,
+          slot: commonSlot,
+          status: "Scheduled"
+        });
+
+        break; // move to next candidate
+      }
+    }
+
+    res.json(schedule);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to generate schedule" });
+  }
 });

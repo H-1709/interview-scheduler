@@ -74,20 +74,20 @@ cd algorithm-java
 javac *.java
 java Scheduler
 
-KEY FEATURES
+## KEY FEATURES
 Skill-based candidate and interviewer matching
 Availability-aware interview scheduling
 Java algorithm separated from backend logic
 REST API driven architecture
 Scalable and interview-ready system design
 
-RESUME HIGHLIGHTS
+## RESUME HIGHLIGHTS
 Built a Java-based interview scheduling algorithm using skill matching and availability constraints.
 Developed a Node.js and Express backend integrated with MongoDB for data persistence.
 Created a Next.js dashboard to visualize interview schedules using REST APIs.
 Designed a modular, scalable architecture separating algorithms, backend services, and frontend UI.
 
-FUTURE ENHANCEMENTS
+### FUTURE ENHANCEMENTS
 Priority-based scheduling using weighted scoring
 Conflict resolution for overlapping interviews
 Real-time schedule updates

@@ -1,32 +1,60 @@
 {
   "candidates": [
     {
-      "_id": "694ce600670ead2e94a91527",
       "candidateId": "C101",
       "name": "Amit Sharma",
-      "skills": [
-        "Java",
-        "DSA",
-        "SQL"
-      ],
-      "availability": [
-        "2025-01-10T10:00",
-        "2025-01-10T11:00"
-      ]
+      "skills": ["Java", "DSA", "SQL"],
+      "availability": ["2025-01-10T10:00", "2025-01-10T11:00"]
+    },
+    {
+      "candidateId": "C102",
+      "name": "Neha Verma",
+      "skills": ["JavaScript", "React", "HTML", "CSS"],
+      "availability": ["2025-01-10T11:00", "2025-01-10T12:00"]
+    },
+    {
+      "candidateId": "C103",
+      "name": "Rahul Patel",
+      "skills": ["Java", "Spring", "System Design"],
+      "availability": ["2025-01-10T10:00", "2025-01-10T12:00"]
+    },
+    {
+      "candidateId": "C104",
+      "name": "Sneha Iyer",
+      "skills": ["Python", "DSA", "Machine Learning"],
+      "availability": ["2025-01-10T11:00"]
+    },
+    {
+      "candidateId": "C105",
+      "name": "Arjun Mehta",
+      "skills": ["Node.js", "MongoDB", "Express"],
+      "availability": ["2025-01-10T10:00", "2025-01-10T11:00"]
     }
   ],
   "interviewers": [
     {
-      "_id": "694ce61d670ead2e94a9152a",
       "interviewerId": "I201",
       "name": "Rahul Mehta",
-      "skills": [
-        "Java",
-        "System Design"
-      ],
-      "availability": [
-        "2025-01-10T10:00"
-      ]
+      "skills": ["Java", "System Design"],
+      "availability": ["2025-01-10T10:00"]
+    },
+    {
+      "interviewerId": "I202",
+      "name": "Pooja Kulkarni",
+      "skills": ["React", "JavaScript"],
+      "availability": ["2025-01-10T11:00"]
+    },
+    {
+      "interviewerId": "I203",
+      "name": "Suresh Nair",
+      "skills": ["Node.js", "MongoDB"],
+      "availability": ["2025-01-10T10:00", "2025-01-10T11:00"]
+    },
+    {
+      "interviewerId": "I204",
+      "name": "Anita Deshpande",
+      "skills": ["Python", "Machine Learning"],
+      "availability": ["2025-01-10T11:00"]
     }
   ]
 }
